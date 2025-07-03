@@ -2,13 +2,23 @@
   "posts": [
     {
       "id": "2",
-      "title": "JSON서버에서 추가함",
-      "author": "json"
+      "title": "fetch TEST",
+      "author": "gywns"
     },
     {
-      "id": "1",
-      "title": "JSON서버에서 추가함",
-      "author": "json"
+      "id": "8",
+      "title": "fetch연습",
+      "author": "admin"
+    },
+    {
+      "id": "9",
+      "title": "fetch연습",
+      "author": "admin"
+    },
+    {
+      "id": "7",
+      "title": "fetch TEST",
+      "author": "gywns"
     }
   ]
 }
