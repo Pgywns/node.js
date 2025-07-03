@@ -10,7 +10,7 @@ const pool = mysql.createPool({
   connectionLimit: 10,
 });
 
-let data = ["name01", "test@email.com", "010-1111-2222"];
+let data = ["name01", "test@email.com", "010-1111-2222", ""];
 data = [
   {
     name: "username",
