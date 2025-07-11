@@ -48,12 +48,12 @@ app.get("/download/:productId/:fileName", (req, res) => {
   }
 
   fs.createReadStream(filepath).pipe(res);
-  res.send("다운로드 완료");
+  // res.send("다운로드 완료");
 });
 
 // 업로드
-app.post("/upload/:filename/:pid", (req, res) => {
-  const { filename, pid } = req.params;
+app.post("/upload/:filename/:pid/:type", (req, res) => {
+  const { filename, pid, type } = req.params;
   // express.urlencoded();
   // const filePath = `${__dirname}/uploads/${filename}`;
 
@@ -67,8 +67,13 @@ app.post("/upload/:filename/:pid", (req, res) => {
 
   try {
     let base64Data = req.body.data;
-    let data = req.body.data.slice(base64Data.indexOf(";base64,") + 8);
-    fs.writeFile(filePath, data, "base64", (err) => {
+    let data = base64Data.slice(base64Data.indexOf(";base64,") + 8);
+    fs.writeFile(filePath, data, "base64", async (err) => {
+      await query(
+        "productImageInsert",
+        [{ product_id: pid, type: type, path: filename }],
+        req.body.where
+      );
       if (err) {
         res.send("error");
       } else {
